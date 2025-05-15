@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENTOZ B WEB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .content-section {
+            padding: 20px;
+            margin: 15px 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .button-group {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .highlight {
+            background-color: #ffffcc;
+            transition: background-color 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DENTOZ</h1>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <article>
+                <h2 id="changeableText">Welcome to Dentoz web</h2>
+                <p id="styleText">Welcome to the platform where talent meets opportunity</p>
+            </article>
+        </section>
+
+        <section class="button-group">
+            <button onclick="changeTextContent()">Change Text</button>
+            <button onclick="toggleStyles()">Toggle Styles</button>
+            <button onclick="addElement()">Add Element</button>
+            <button onclick="removeElement()">Remove Element</button>
+        </section>
+
+        <div id="elementContainer"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Dentoz b. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let styleChanged = false;
+        let elementCounter = 1;
+
+        function changeTextContent() {
+            const textElement = document.getElementById('changeableText');
+            textElement.textContent = textElement.textContent.includes('Welcome') 
+                ? 'Text Changed Successfully! 🎉' 
+                : 'Welcome to the Demo';
+        }
+
+        function toggleStyles() {
+            const styleElement = document.getElementById('styleText');
+            styleElement.style.color = styleChanged ? 'black' : 'red';
+            styleElement.style.fontSize = styleChanged ? '1rem' : '1.2rem';
+            styleElement.style.fontWeight = styleChanged ? 'normal' : 'bold';
+            styleChanged = !styleChanged;
+        }
+
+        function addElement() {
+            const container = document.getElementById('elementContainer');
+            const newElement = document.createElement('div');
+            newElement.className = 'content-section highlight';
+            newElement.innerHTML = `
+                <h3>New Element ${elementCounter}</h3>
+                <p>Created at ${new Date().toLocaleTimeString()}</p>
+            `;
+            container.appendChild(newElement);
+            elementCounter++;
+        }
+
+        function removeElement() {
+            const container = document.getElementById('elementContainer');
+            if (container.lastChild) {
+                container.removeChild(container.lastChild);
+                elementCounter = Math.max(1, elementCounter - 1);
+            }
+        }
+    </script>
+</body>
+</html>
